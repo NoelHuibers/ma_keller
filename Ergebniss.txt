@@ -1,0 +1,82 @@
+Angabe Testperson:
+
+Bildungsstand: B.Sc. Angewandte Informatik
+Gute Kenntnisse in folgenden relevanten Programmiersprachen: Python, JavaScript/TypeScript, Ruby, C++, Rust
+Gute Kenntnisse in folgenden relevanten Tools: Maus, Tastatur, VSCode, Terminal, Git, Karaffen
+
+Eingesetzte Programmiersprache: 
+Rust
+
+Eingesetzte Tools:  
+VSCode mit folgenden Extensions um schneller & 
+besser zu arbeiten (Von relevant - irrelevant geordnet): 
+Rust Syntax, rust-analyzer, Rainbow CSV, crates, GitHub Copilot, 
+indent-rainbow, Community Material Theme + Icons
+
+Dauer:
+Lesen & Verstehen der Aufgabe: 15min
+Anschauen der Daten: 5min
+Implementierung der Duplikatenfindung & Löschung + Evaluierung der Zwischenergebnisse/Tests: 1h
+(Nacht schlaf zur Ideenfindung für den zweiten & dritten Teil.)
+Implementierung Alkohol: 2h
+Implementierung Scores: 1h
+Evaluation: 5min
+Schreiben des Dokumentes hier: 20min (Ich hatte Spaß okay)
+Gesamt: 4h45min
+
+Persönliche Schätzung der Genauigkeit in %:
+Duplikate: 100%
+Alkohol: 75% (Alles unter 50% wäre ich mit Math.random besser gewesen)
+Overallrating: 50% (Zu Zufallsbasiert, hier wäre eine Analyse meines Algorhytmuses aber von nöten
+[mehrmals durchlaufen lassen und schauen wie viel % ich average treffe, da ich randomness drin habe])
+
+Vorgehen:
+Lesen der Aufgabe
+Initalisierung eines Rust Projekts.
+Warum Rust? Performant im Umgang mit vielen Daten & programmierfreundlich -> Langfristig besser.
+Anschauen der Daten in VSCode mit CSV Rainbow um die Aufgabe richtig zu verstehen und eine Idee zu entwickeln.
+Problem 1: 
+Duplikate: Wichtige Zeilen: Name, address_id & 
+RestaurantStreet;RestaurantCity;RestaurantState;RestaurantCountry;RestaurantZIP in einem
+Programmieren eines Duplikatefinders, welcher diese drei Sachen überprüft.
+Outcome: Name: 34 Duplikate, Addressid: 31 Duplikate, Alle restlichen Zeilen: 6 Duplikate
+Entscheidung: Da ein Unternehmen (gleicher Name) an mehreren Standorten ihren Sitz haben kann (und
+es bei den Test daten 1x der Fall ist) ist die AddressID die wichtigste => 31 Entfernt.
+Extra Frage für die Zukunft: Was ist wenn ein Unternehmen schließt an der selben Adresse aber ein neues aufmacht?
+Hierfür müsste man nur Sachen entfernen die sowohl selbe Address als auch selbe selben Namen haben.
+In den Testdaten existiert dieses aber nicht. => Problem für den nächsten Entwickler, Zeit ist Geld!
+Implementierung die Duplikate aus der Restaurant.csv zu löschen und die Restaurant.csv neu auszugeben.
+(Welches Duplikate soll entfernt werden (Was ist die richtige Zeile???))
+Problem 2:
+Alkohl & Overallrating:
+Erstmal geben wir uns alle Reihen aus die wir überhaupt bearbeiten müssen um ein Bild davon zu bekommen.
+(Dies ist wahrscheinlich eigentlich nicht nötig, ich fands aber einfacher so die Aufgabe besser zu verstehen
+und eine Lösung zu finden)
+Zunächst einmal hab ich Abstand von dem Projekt genommen und 1000x andere
+Dinge getan um in meinem Kopf Klarheit zu bekommen, da im ersten Moment keine Lösung da war.
+(Ob dies als extra Zeit gelten sollte, soll Gott & der Erfinder der Aufgabe entscheiden).
+Nach einer spontanen Idee nach dem aufstehen gin es los:
+Hierbei nehmen wir erstmal ein Mittel aus der Statistik. Welcher Wert ist mit welcher wahrscheinlichkeit dafür
+verantwortlich, das etwas dafür verantwortlich ist.
+
+Beim Überfliegen der Daten und suchen nach was ganz anderem fand ich "only at bar" bei Smoking.
+Eine Bar ohne Alkohol ist so unwahrscheinlich (Woke-Links kann dies zwar ändern,
+nicht jedoch in England), das dort Alkohol auf True gesetzt werden kann.
+
+Fazit:
+Ich bin fest der überzeugung, das die Duplikatenfindung mit diesem Algorhytmus schneller Implementiert,
+als auch mehr Sonderfälle beachten kann bei Erweiterung (Siehe Beispiel was ich angebracht habe).
+Außerdem ist die Laufzeit in Rust dieses Algorhytmuses auf einer schlechten Maschine unter einer Sekunde,
+hierbei werden nicht Ressourcen verschwendet. Für so eine Aufgabe würde ich immer einen guten Algo bevorzugen.
+
+Die Bestimmung von Alkohol ja/nein und Overallscore hingegen ist mMn. eine perfekte Aufgabe,
+um zu zeigen wie stark ML sein kann. Als Mensch patterns zu finden ist wesentlich schwieriger und brauch Ideenreichtum.
+Diese patterns richtig zu schätzen in einem Algorhytmus ist nicht Ansatzweise so gut wie eine gute KI.
+Ich selbst hätte für diese Aufgabe sofort ML genutzt, da dies das bessere Werkzeug ist.
+
+Abschließend will Ich sagen, dass auch in Zeiten wo Cloudcomputing günstig ist, performanz eine Rolle spielt.
+Ein ML die zur Duplikatfindung jedes Mal x-Kerne beansprucht und in Python geschrieben ist und auch noch lange braucht,
+schont nicht die endlichen Ressourchen die die Menschheit hat. Für sowas ML zu nutzen macht mich traurig und
+bricht mein Herz für minmalistischen, perfektionierten Quellcode & Programmen.
+
+Quellcode & Co: github.com/NoelHuibers/
